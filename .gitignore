@@ -2,7 +2,7 @@ src/vendor/
 src/node_modules/
 src/npm-debug.log
 src/yarn-error.log
-.idea
+/.idea/
 
 # Laravel 4 specific
 src/bootstrap/compiled.php
