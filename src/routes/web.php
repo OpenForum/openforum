@@ -30,10 +30,9 @@ Route::prefix('/forum')->group(function() {
 //Profile routing
 Route::prefix('/profile')->group(function() {
     $profile_controller = ProfileController::class;
-    //Here the user can edit his profile.
     Route::get('/', [$profile_controller, 'index'])->name('profile');
-    //Saves the edited profile to the backand.
-    Route::post('/profile/edit', [$profile_controller, 'edit'])->name('profile_edit');
+    Route::get('/edit', [$profile_controller, 'edit'])->name('profile_edit');
+    Route::post('/update', [$profile_controller, 'update'])->name('profile_update');
 });
 
 //Members Routing

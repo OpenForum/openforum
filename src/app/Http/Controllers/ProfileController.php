@@ -14,10 +14,11 @@ class ProfileController extends Controller
     /**
      * Returns the page where the user can edit his profile.
      */
-    public function index()
+    public function index(Request $request)
     {
+        //The current authenticated user.
         $user = Auth::user();
-
+        $request->method();
     }
 
 }
