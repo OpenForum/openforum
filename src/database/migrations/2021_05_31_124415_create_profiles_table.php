@@ -16,7 +16,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('display_name', 50);
-            $table->string('biography', 500);
+            $table->string('biography', 500)->nullable();
             $table->string('profile_image');
             $table->enum('gender', config('enums.gender'));
             $table->foreignId('user_id')->references('id')->on('users');

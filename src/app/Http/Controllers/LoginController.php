@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth.redirect');
+    }
+
     public function index()
     {
         return view('pages.signin');
@@ -17,6 +21,5 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-
     }
 }

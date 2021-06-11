@@ -40,4 +40,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Gets the profile of this user.
+     * @return Profile
+     */
+    public function profile(): Profile
+    {
+        return Profile::where('user_id', $this->id)->first();
+    }
+
+    /**
+     * Gets all threads created by this user.
+     * @return array of threads created by this user.
+     */
+    public function threads() : array
+    {
+        return Thread::where('publisher_id',$this->id)->get();
+    }
+
 }

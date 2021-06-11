@@ -1,23 +1,26 @@
 <?php
 
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
 $pages_controller = PagesController::class;
-
 //Home page
 Route::get('/', [$pages_controller, 'index'])->name('home');
 
-//Sign-in page
-Route::get('/login', [$pages_controller, 'login'])->name('login');
-Route::get('/register', [$pages_controller, 'register'])->name('register');
+$login_controller = LoginController::class;
+Route::get('/signin', [$login_controller, 'index'])->name('signin');
+Route::post('/login', [$login_controller, 'login'])->name('login');
 
-Route::post('/signin', [$pages_controller, 'signin'])->name('signin');
-Route::post('/signup', [$pages_controller, 'signup'])->name('signup');
+$register_controller = RegisterController::class;
+Route::get('/signup', [$register_controller, 'index'])->name('signup');
+Route::post('/register', [$register_controller, 'register'])->name('register');
+
 
 //Forum Routing
 Route::prefix('/forum')->group(function() {
