@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('Auth');
     }
     /**
      * Returns the page where the user can edit his profile.

@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ForumController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,11 +15,11 @@ Route::get('/', [$pages_controller, 'index'])->name('home');
 
 $login_controller = LoginController::class;
 Route::get('/signin', [$login_controller, 'index'])->name('signin');
-Route::post('/login', [$login_controller, 'login'])->name('login');
+Route::post('/login', [$login_controller, 'handle'])->name('login');
 
 $register_controller = RegisterController::class;
 Route::get('/signup', [$register_controller, 'index'])->name('signup');
-Route::post('/register', [$register_controller, 'register'])->name('register');
+Route::post('/register', [$register_controller, 'handle'])->name('register');
 
 
 //Forum Routing

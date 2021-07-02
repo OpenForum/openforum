@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,14 +23,14 @@ class RegisterController extends Controller
      * Gets called when someone signs up on the website.
      * @param Request $request
      */
-    public function register(Request $request)
+    public function handle(Request $request)
     {
         //Validates the form by checking the input fields. if invalid. A form error will be shown in the user screen.
         $this->validate($request, [
-            'name' => [ 'bail', 'required', 'max:50', 'unique:users'],
-            'display_name' => ['required', 'max:15'],
+            'name' => [ 'bail', 'required', 'max:50', 'unique:users,name'],
+            'display_name' => ['required', 'max:15', 'regex:^[a-z-A-Z0-9_]+$'],
             'gender' => 'required',
-            'email' => ['bail', 'required', 'email', 'unique:users'],
+            'email' => ['bail', 'required', 'email', 'unique:users,email'],
             'password' => ['required', 'min:8', 'confirmed'],
             'password_confirmation' => ['required', 'min:8']
         ]);
@@ -50,7 +51,6 @@ class RegisterController extends Controller
 
         //Let's login the user before redirecting him.
         Auth::login($user);
-
         //And finally, lets redirect the freshly created user to his profile page where he can continue editing his information.
         return redirect(route('profile'));
     }
