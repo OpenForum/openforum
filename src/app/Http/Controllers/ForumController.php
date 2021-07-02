@@ -10,7 +10,8 @@ class ForumController extends Controller
 {
     public function index()
     {
-        return view('pages.forum.forum');
+        $categories = Category::all();
+        return view('pages.forum.forum', compact('categories'));
     }
 
     public function category(Category $category)
@@ -21,5 +22,9 @@ class ForumController extends Controller
     public function thread(Thread $thread)
     {
 
+    }
+
+    public function create_category() {
+        return view('pages.forum.create_category');
     }
 }

@@ -17,7 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->foreignId('section_id')->references('id')->on('sections');
         });
     }
 

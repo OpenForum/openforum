@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view('pages.home');
+        return redirect()->route('forum');
     }
 
     public function logout()

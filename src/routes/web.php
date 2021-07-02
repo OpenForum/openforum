@@ -26,8 +26,9 @@ Route::post('/register', [$register_controller, 'handle'])->name('register');
 Route::prefix('/forum')->group(function() {
     $forum_controller = ForumController::class;
     Route::get('/', [$forum_controller, 'index'])->name('forum');
-    Route::get('/{category}', [$forum_controller, 'category'])->name('category');
+    Route::get('/category/{category}', [$forum_controller, 'category'])->name('category');
     Route::get('/threads/{thread}', [$forum_controller, 'thread'])->name(' thread');
+    Route::get('/create-category', [$forum_controller, 'create_category'])->name('create_category');
 });
 
 //Profile routing
